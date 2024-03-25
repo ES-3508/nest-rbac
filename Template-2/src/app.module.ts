@@ -7,6 +7,8 @@ import { ProductModule } from './product/product.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { StripeModule } from './stripe/stripe.module';
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from './auth/guard/role.guard';
 
 @Module({
   imports: [
@@ -20,6 +22,7 @@ import { StripeModule } from './stripe/stripe.module';
     StripeModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService
+  ],
 })
 export class AppModule {}

@@ -27,7 +27,7 @@ export class AuthService {
       loginUserDto.password,
     );
 
-    const payload = { email: user.email, name: user.name };
+    const payload = { email: user.email, name: user.name, roles:user.roles };
     const jwt = await this.jwtService.signAsync(payload);
     return { jwt };
   }
@@ -48,7 +48,8 @@ export class AuthService {
     if (!isPasswordMatching) {
       throw new Error('Invalid credentials');
     }
-    return { name: user.name, email: user.email };
+    console.log("validation")
+    return { name: user.name, email: user.email, roles: user.roles };
   }
 
   async verifyJwt(jwt: string) {
